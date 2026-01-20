@@ -6,6 +6,7 @@ for ($i = 0; $i <= 9; $i++) {
 
 }
 
+
 $j = 1 ;
 while ($j <= 10) {
    echo "Itération : $j <br>";
@@ -25,3 +26,5 @@ for ($i = 1; $i <= 10; $i++) {
    if ($i == 8) break;
    echo "Valeur : $i <br>";
 }
+
+
