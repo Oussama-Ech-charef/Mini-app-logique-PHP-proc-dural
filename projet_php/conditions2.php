@@ -10,6 +10,9 @@ if ($age >= 18) {
     echo "Vous êtes mineur.";
 }
 
+echo "<br>";
+echo "<br>";
+
 
 $note = 14;
 
@@ -21,6 +24,9 @@ if ($note >= 16) {
 } else {
     echo "Échec";
 } 
+
+echo "<br>";
+echo "<br>";
 
 $jour = "Vendredi";
 switch ($jour) {
