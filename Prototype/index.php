@@ -1,3 +1,39 @@
+<?php 
+$resultat = "";
+$erreur = "";
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+   $n1 = $_POST['n1'];
+   $n2 = $_POST['n2'];
+   $op = $_POST['operation'];
+
+
+
+
+      if (is_numeric($n1) && is_numeric($n2)) {
+
+      
+         if ($op == "+") {
+            $res = $n1 + $n2;
+            $resultat = "Addition: " . $res;
+
+         } elseif ($op == "-") {
+            $res = $n1 - $n2;
+            $resultat = "Soustraction: " . $res;
+
+         }elseif ($op == "*") {
+            $res = $n1 * $n2;
+            $resultat = "Multiplication: " . $res;
+         }
+      } 
+}
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
