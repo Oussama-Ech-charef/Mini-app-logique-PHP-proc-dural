@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       if (is_numeric($n1) && is_numeric($n2)) {
 
-      
+
          if ($op == "+") {
             $res = $n1 + $n2;
             $resultat = "Addition: " . $res;
@@ -25,9 +25,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          }elseif ($op == "*") {
             $res = $n1 * $n2;
             $resultat = "Multiplication: " . $res;
+            
+         }elseif ($op == "/") {
+            if ($n2 != 0) {
+               $res = $n1 / $n2;
+               $resultat = "Division: " . $res;
+
+            }else {
+               $erreur = "Erreur: Impossible de diviser par zéro !";
+            }
          }
-      } 
-}
+
+      } else {
+         $erreur = "S'il vous plaît, entrez des nombres valides.";
+      }
+
+
+
+
+      if ($erreur != "") {
+         echo "<p style='color: red;'>$erreur</p>";
+      }
+
+
+      if ($resultat != ""){
+         echo "<label>Résulrat :</label>";
+         echo "<input type='text' value='$resultat' readonly>";
+      }
+
+} 
+
 
 ?>
 
