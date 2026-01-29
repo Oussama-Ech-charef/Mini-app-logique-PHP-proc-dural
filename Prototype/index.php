@@ -1,4 +1,5 @@
 <?php 
+
 $resultat = "";
 $erreur = "";
 
@@ -13,50 +14,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       if (is_numeric($n1) && is_numeric($n2)) {
 
-
          if ($op == "+") {
             $res = $n1 + $n2;
-            $resultat = "Addition: " . $res;
+            $resultat = $res;
 
          } elseif ($op == "-") {
             $res = $n1 - $n2;
-            $resultat = "Soustraction: " . $res;
+            $resultat =  $res;
 
          }elseif ($op == "*") {
             $res = $n1 * $n2;
-            $resultat = "Multiplication: " . $res;
-            
+            $resultat =  $res;
+
          }elseif ($op == "/") {
             if ($n2 != 0) {
                $res = $n1 / $n2;
-               $resultat = "Division: " . $res;
+               $resultat =  $res;
 
             }else {
-               $erreur = "Erreur: Impossible de diviser par zéro !";
+               $erreur = "Erreur: Division par zéro!";
             }
+
          }
 
       } else {
-         $erreur = "S'il vous plaît, entrez des nombres valides.";
+         $erreur = "Veuillez saisir des nombres.";
       }
 
 
 
 
-      if ($erreur != "") {
-         echo "<p style='color: red;'>$erreur</p>";
-      }
 
-
-      if ($resultat != ""){
-         echo "<label>Résulrat :</label>";
-         echo "<input type='text' value='$resultat' readonly>";
-      }
-
-} 
-
+}
 
 ?>
+
 
 
 
@@ -67,27 +59,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Calculatrice PHP Simple</title>
+   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <h1>Ma Calculatrice PHP</h1>
+
+   <div class="content">
+
+   <h2>Ma Calculatrice PHP</h2>
 
    <form  method="POST"  action="">
-      <input type="number" name="n1" placeholder="Nombre 1" required>
+
+      <input type="number" name="n1" placeholder="Nombre 1" >
 
       <select name="operation">
-         <option value="+">+</option>
-         <option value="-">-</option>
-         <option value="*">*</option>
-         <option value="/">/</option>
+         <option value="+">Addition (+)</option>
+         <option value="-">Soustraction (-)</option>
+         <option value="*">Multiplication (*)</option>
+         <option value="/">Division (/)</option>
       </select>
 
-      <input type="number" name="n2" placeholder="Numbre 2" required>
+      <input type="number" name="n2" placeholder="Numbre 2">
 
       <button type="submit">Calculer</button>
+
+      <br><br>
+
+        <input class="resultat" type="text" value="<?php echo $resultat; ?>" placeholder="Resultat... " readonly>
+        
+        <p><?php echo $erreur; ?></p>
+        
    </form>
 
-   <br>
-
+</div>
 
    
 </body>
