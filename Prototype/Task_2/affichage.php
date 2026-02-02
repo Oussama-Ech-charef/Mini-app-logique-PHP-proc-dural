@@ -46,7 +46,7 @@ $postal_code         = $_POST['postal_code'];
             </tr>
             <tr>
                 <td><strong>First Name</strong></td>
-                <td style="color: #3d3d3d;"><?php echo $first_name; ?></td>
+                <td><?php echo $first_name; ?></td>
             </tr>
             <tr>
                 <td><strong>Address</strong></td>
