@@ -1,10 +1,10 @@
 <?php
 
-$last_name           = $_POST['last_name'];
-$first_name          = $_POST['first_name'];
-$address             = $_POST['address'];
-$city                = $_POST['city'];
-$postal_code         = $_POST['postal_code'];
+$last_name           = $_POST['last_name']?? '';
+$first_name          = $_POST['first_name']?? '';
+$address             = $_POST['address']?? '';
+$city                = $_POST['city']?? '';
+$postal_code         = $_POST['postal_code']?? '';
 
 
 ?>
