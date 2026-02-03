@@ -26,25 +26,24 @@ function calculate($n1, $n2, $op) {
    return "";
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['send'])) {
 
-   $n1 = $_POST['n1'];
-   $n2 = $_POST['n2'];
-   $op = $_POST['operation'];
+    $n1 = $_POST['n1'];
+    $n2 = $_POST['n2'];
+    $op = $_POST['operation'];
 
-   if (is_numeric($n1) && is_numeric($n2)) {
-      
-if ($op == "/" && $n2 == 0) {
-          $erreur = "Error: Division par zéro!"; 
-          $resultat = "";
-      } else {
-          $resultat = calculate($n1, $n2, $op);
-          $erreur = "";
-      }
-      
-   } else {
-      $erreur = "Please enter valid numbers.";
-   }
+    if (is_numeric($n1) && is_numeric($n2)) {
+
+        if ($op == "/" && $n2 == 0) {
+            $erreur = "Error: Division par zéro!"; 
+
+        } else {
+            $resultat = calculate($n1, $n2, $op);
+        }
+
+    } else {
+        $erreur = "Please enter valid numbers.";
+    }
 }
 ?>
 
@@ -62,7 +61,7 @@ if ($op == "/" && $n2 == 0) {
       <h2>My PHP Calculator</h2>
 
       <form method="POST" action="">
-         <input type="number" name="n1" placeholder="Number 1" step="any">
+         <input type="text" name="n1" placeholder="Number 1" step="any">
 
          <select name="operation">
             <option value="+">Addition (+)</option>
@@ -71,9 +70,9 @@ if ($op == "/" && $n2 == 0) {
             <option value="/">Division (/)</option>
          </select>
 
-         <input type="number" name="n2" placeholder="Number 2" step="any">
+         <input type="text" name="n2" placeholder="Number 2" step="any">
 
-         <button type="submit">Calculate</button>
+         <button type="submit" name="send">Calculate</button>
 
          <br><br>
 
