@@ -8,7 +8,9 @@ if (isset($_POST['submit_review'])) {
 
     $name    = htmlspecialchars(trim($_POST['name'] ?? ''));
     $mail    = htmlspecialchars(trim($_POST['mail'] ?? ''));
-    $comment = htmlspecialchars(trim($_POST['comment'] ?? ''));
+$comment = trim($_POST['comment']);
+$comment = htmlspecialchars($comment);
+$comment = str_replace(["\r\n", "\n", "\r"], "<br>", $comment);
     $date    = date("d/m/y H:i:s");
 
     if (!empty($name) && !empty($mail) && !empty($comment)) {
