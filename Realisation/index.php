@@ -8,16 +8,16 @@ if (isset($_POST['submit_review'])) {
 
     $name    = htmlspecialchars(trim($_POST['name'] ?? ''));
     $mail    = htmlspecialchars(trim($_POST['mail'] ?? ''));
-$comment = trim($_POST['comment']);
-$comment = htmlspecialchars($comment);
-$comment = str_replace(["\r\n", "\n", "\r"], "<br>", $comment);
+    $comment = trim($_POST['comment']);
+    $comment = htmlspecialchars($comment);
+    $comment = str_replace(["\r\n"], "<br>", $comment);
     $date    = date("d/m/y H:i:s");
 
     if (!empty($name) && !empty($mail) && !empty($comment)) {
 
         $line_to_save = "<<$name|$mail|$date|$comment>>" . PHP_EOL;
         
-        file_put_contents($file, $line_to_save, FILE_APPEND | LOCK_EX);
+        file_put_contents($file, $line_to_save, FILE_APPEND );
         $success = "Review saved successfully!";
     } else {
         $error = "Please fill in all fields before submitting.";
@@ -28,7 +28,7 @@ $comment = str_replace(["\r\n", "\n", "\r"], "<br>", $comment);
 if (isset($_POST['show_reviews'])) {
     if (file_exists($file)) {
        
-        $all_lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        $all_lines = file($file,   FILE_SKIP_EMPTY_LINES);
         
         $reviews_to_show = array_slice(array_reverse($all_lines), 0, 5);
     } else {
