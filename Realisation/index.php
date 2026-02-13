@@ -6,11 +6,9 @@ $reviews_to_show = [];
 
 if (isset($_POST['submit_review'])) {
 
-    $name    = htmlspecialchars(trim($_POST['name'] ?? ''));
-    $mail    = htmlspecialchars(trim($_POST['mail'] ?? ''));
-    $comment = trim($_POST['comment']);
-    $comment = htmlspecialchars($comment);
-    $comment = str_replace(["\r\n"], "<br>", $comment);
+    $name    = str_replace("|", "", htmlspecialchars(trim($_POST['name'] ?? '')));
+    $mail    = str_replace("|", "", htmlspecialchars(trim($_POST['mail'] ?? '')));
+    $comment = str_replace(["\r\n", "|"], ["<br>", ""], htmlspecialchars(trim($_POST['comment'] ?? '')));
     $date    = date("d/m/y H:i:s");
 
     if (!empty($name) && !empty($mail) && !empty($comment)) {
